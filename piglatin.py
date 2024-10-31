@@ -1,6 +1,5 @@
 
 class PigLatin:
-
     def __init__(self, phrase: str):
         self.phrase = phrase
 
@@ -8,5 +7,7 @@ class PigLatin:
         return self.phrase
 
     def translate(self) -> str:
+        if self.phrase == '':
+            return 'nil'
         return self.phrase
 
