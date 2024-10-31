@@ -1,5 +1,5 @@
-from error import PigLatinError
 
+from error import PigLatinError
 
 class PigLatin:
     def __init__(self, phrase: str):
@@ -9,7 +9,6 @@ class PigLatin:
         return self.phrase
 
     def translate(self) -> str:
-
         if not self.phrase:
             return 'nil'
 
@@ -50,17 +49,25 @@ class PigLatin:
         return ' '.join(translated_words)
 
     def translate_word(self, word: str) -> str:
+        new_word = ''
         if word[0].lower() in 'aeiou':
             if word[-1] in 'aeiou':
-                return word + 'yay'
+                new_word = word + 'yay'
             elif word[-1] == 'y':
-                return word + 'nay'
+                new_word = word + 'nay'
             else:
-                return word + 'ay'
+                new_word = word + 'ay'
         else:
             first_vowel_idx = next((i for i, letter in enumerate(word) if letter.lower() in 'aeiou'), None)
             if first_vowel_idx is None:
-                return word + 'ay'
+                new_word = word + 'ay'
             else:
-                return word[first_vowel_idx:] + word[:first_vowel_idx] + 'ay'
+                new_word = word[first_vowel_idx:] + word[:first_vowel_idx] + 'ay'
+
+        if word.isupper():
+            return new_word.upper()
+        elif word.istitle():
+            return new_word.title()
+        else:
+            return new_word
 

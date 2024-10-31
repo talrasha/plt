@@ -65,3 +65,11 @@ class TestPigLatin(unittest.TestCase):
     def test_unallowed_punctuation(self):
         translator = PigLatin('test% and€')
         self.assertRaises(PigLatinError,translator.translate)
+
+    def test_uppercase(self):
+        translator = PigLatin('HELLO')
+        self.assertEqual(translator.translate(),'ELLOHAY')
+
+    def test_uppercase_initial(self):
+        translator = PigLatin('Hello World!')
+        self.assertEqual(translator.translate(),'Ellohay Orldway!')
