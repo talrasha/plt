@@ -12,3 +12,15 @@ class TestPigLatin(unittest.TestCase):
     def test_empty_str_nil(self):
         translator = PigLatin.PigLatin('')
         self.assertEqual(translator.translate(),'nil')
+
+    def test_start_vowel_end_y(self):
+        translator = PigLatin.PigLatin('any')
+        self.assertEqual(translator.translate(),'anynay')
+
+    def test_start_vowel_end_consonant(self):
+        translator = PigLatin.PigLatin('ask')
+        self.assertEqual(translator.translate(),'askay')
+
+    def test_start_vowel_end_vowel(self):
+        translator = PigLatin.PigLatin('apple')
+        self.assertEqual(translator.translate(),'appleyay')

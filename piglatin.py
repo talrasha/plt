@@ -9,5 +9,17 @@ class PigLatin:
     def translate(self) -> str:
         if self.phrase == '':
             return 'nil'
-        return self.phrase
+        words = self.phrase.split()
+        translated_words = []
+        for word in words:
+            if word[0] in 'aeiouAEIOU':
+                if word[-1] in 'aeiouAEIOU':
+                    translated_words.append(word + 'yay')
+                elif word[-1] == 'y':
+                    translated_words.append(word + 'nay')
+                else:
+                    translated_words.append(word + 'ay')
+            else:
+                translated_words.append(word)
+        return ' '.join(translated_words)
 
