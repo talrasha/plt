@@ -1,3 +1,4 @@
+from fnmatch import translate
 
 from error import PigLatinError
 
@@ -50,7 +51,10 @@ class PigLatin:
 
     def translate_word(self, word: str) -> str:
         new_word = ''
-        if word[0].lower() in 'aeiou':
+        if '-' in word:
+            new_word = '-'.join([self.translate_word(w) for w in word.split('-')])
+
+        elif word[0].lower() in 'aeiou':
             if word[-1] in 'aeiou':
                 new_word = word + 'yay'
             elif word[-1] == 'y':
