@@ -20,6 +20,6 @@ class PigLatin:
                 else:
                     translated_words.append(word + 'ay')
             else:
-                translated_words.append(word)
+                translated_words.append(word[1:] + word[0] + 'ay')
         return ' '.join(translated_words)
 
